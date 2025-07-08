@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Orquestador Koch - Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="auto-refresh" id="refreshStatus">🔄 Auto-actualización: ON</div>
+    
+    <div class="container">
+        <h1>🎯 Orquestador Koch - Sistema Distribuido</h1>
+        
+        <div class="card" id="estadisticas">
+            <h2>📊 Estadísticas Generales</h2>
+            <p><strong>Trabajos completados:</strong> <span id="trabajos-completados">{{ stats.trabajos_completados }}</span></p>
+            <p><strong>Trabajos fallidos:</strong> <span id="trabajos-fallidos">{{ stats.trabajos_fallidos }}</span></p>
+            <p><strong>Tiempo total de procesamiento:</strong> <span id="tiempo-total">{{ "%.2f"|format(stats.tiempo_total_procesamiento) }}s</span></p>
+            <p><strong>Trabajos en cola:</strong> <span id="cola-size">{{ cola_size }}</span></p>
+            <p><strong>Trabajos en proceso:</strong> <span id="trabajos-proceso">{{ trabajos_en_proceso|length }}</span></p>
+        </div>
+        
+        <!-- Gráficos del Sistema -->
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3>📈 Estado de Trabajos</h3>
+                <div class="chart-container">
+                    <canvas id="estadosChart"></canvas>
+                </div>
+            </div>
+            <div class="chart-card">
+                <h3>⚖️ Carga por Esclavo</h3>
+                <div class="chart-container">
+                    <canvas id="cargaChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card" id="esclavos-container">
+            <h2>🖥️ Estado de Esclavos</h2>
+            <div id="esclavos-table">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>URL</th>
+                        <th>Estado</th>
+                        <th>Último Ping</th>
+                        <th>Trabajos Ejecutados</th>
+                        <th>Tiempo Total</th>
+                    </tr>
+                    {% for esclavo_id, info in esclavos.items() %}
+                    <tr>
+                        <td>{{ esclavo_id }}</td>
+                        <td>{{ info.url }}</td>
+                        <td class="status-{{ info.status }}">{{ info.status }}</td>
+                        <td>{{ info.last_ping.strftime('%H:%M:%S') if info.last_ping else 'Nunca' }}</td>
+                        <td>{{ info.trabajos_ejecutados }}</td>
+                        <td>{{ "%.2f"|format(info.tiempo_total) }}s</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        
+        <div class="card">
+            <h2>➕ Agregar Trabajo</h2>
+            <form id="form-trabajo" action="/trabajo" method="post">
+                <div class="form-group">
+                    <label>Algoritmo:</label>
+                    <select name="algoritmo" id="algoritmo">
+                        <option value="ClassicKoch">Classic Koch</option>
+                        <option value="JAXKoch">JAX Koch</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Iteraciones:</label>
+                    <input type="number" name="iteraciones" id="iteraciones" value="4" min="1" max="12">
+                </div>
+                <div class="form-group">
+                    <label>Tamaño:</label>
+                    <input type="number" name="size" id="size" value="3.0" step="0.1" min="0.1">
+                </div>
+                <div class="form-group">
+                    <label>DPI:</label>
+                    <input type="number" name="dpi" id="dpi" value="300" min="100" max="600">
+                </div>
+                <button type="submit">Agregar Trabajo</button>
+                <button type="button" onclick="limpiarFormulario()">Limpiar</button>
+            </form>
+        </div>
+        
+        <div class="card" id="trabajos-proceso-container">
+            <h2>📋 Trabajos en Proceso</h2>
+            <div id="trabajos-proceso-content">
+                {% if trabajos_en_proceso %}
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Esclavo</th>
+                        <th>Algoritmo</th>
+                        <th>Parámetros</th>
+                        <th>Tiempo Ejecutando</th>
+                    </tr>
+                    {% for trabajo_id, info in trabajos_en_proceso.items() %}
+                    <tr>
+                        <td>{{ trabajo_id[:8] }}...</td>
+                        <td>{{ info.esclavo_id }}</td>
+                        <td>{{ info.trabajo.algoritmo }}</td>
+                        <td>iter={{ info.trabajo.parametros.iteraciones }}, size={{ info.trabajo.parametros.size }}</td>
+                        <td>{{ "%.1f"|format(now - info.inicio) }}s</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <p>No hay trabajos en proceso actualmente.</p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <div class="card" id="resultados-container">
+            <h2>✅ Últimos Resultados</h2>
+            <div id="resultados-content">
+                {% if resultados %}
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Esclavo</th>
+                        <th>Estado</th>
+                        <th>Tiempo</th>
+                        <th>Timestamp</th>
+                    </tr>
+                    {% for trabajo_id, resultado in resultados.items() %}
+                    <tr>
+                        <td>{{ trabajo_id[:8] }}...</td>
+                        <td>{{ resultado.esclavo_id if resultado.esclavo_id else 'N/A' }}</td>
+                        <td>{{ '✅ Exitoso' if not resultado.error else '❌ Error' }}</td>
+                        <td>{{ "%.2f"|format(resultado.tiempo_ejecucion) }}s if resultado.tiempo_ejecucion else 'N/A' }}</td>
+                        <td>{{ resultado.timestamp }}</td>
+                    </tr>
+                    {% endfor %}
+                </table>
+                {% else %}
+                <p>No hay resultados todavía.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>

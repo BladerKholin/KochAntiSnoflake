@@ -1,0 +1,238 @@
+{
+  "casos_prueba": [
+    {
+      "nombre": "Prueba ClassicKoch - 1 iteración",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 1,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 1 iteración",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 1,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 2 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 2,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 2 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 2,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 3 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 3 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 4 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 4,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 4 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 4,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 5 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 5 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 6 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 6,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 6 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 6,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 7 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 7,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 7 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 7,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 8 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 8,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 8 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 8,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 9 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 9,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 9 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 9,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 10 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 10,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 10 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 10,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 5 iteraciones con tamaño grande",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 5.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 5 iteraciones con tamaño grande",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 5.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 3 iteraciones con DPI alto",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 600
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 3 iteraciones con DPI alto",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 600
+      }
+    },
+    {
+      "nombre": "Prueba ClassicKoch - 11 iteraciones",
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 11,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "nombre": "Prueba JAXKoch - 11 iteraciones",
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 11,
+        "size": 3.0,
+        "dpi": 300
+      }
+    }
+  ]
+}

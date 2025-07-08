@@ -1,0 +1,84 @@
+{
+  "trabajos": [
+    {
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 3,
+        "size": 3.0,
+        "dpi": 300
+      }
+    },
+    {
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 2.5,
+        "dpi": 400
+      }
+    },
+    {
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 5,
+        "size": 2.5,
+        "dpi": 400
+      }
+    },
+    {
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 7,
+        "size": 4.0,
+        "dpi": 200
+      }
+    },
+    {
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 7,
+        "size": 4.0,
+        "dpi": 200
+      }
+    },
+    {
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 8,
+        "size": 3.5,
+        "dpi": 300
+      }
+    },
+    {
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 8,
+        "size": 3.5,
+        "dpi": 300
+      }
+    },
+    {
+      "algoritmo": "ClassicKoch",
+      "parametros": {
+        "iteraciones": 10,
+        "size": 2.0,
+        "dpi": 150
+      }
+    },
+    {
+      "algoritmo": "JAXKoch",
+      "parametros": {
+        "iteraciones": 10,
+        "size": 2.0,
+        "dpi": 150
+      }
+    }
+  ]
+}

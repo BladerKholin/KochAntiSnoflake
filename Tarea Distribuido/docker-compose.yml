@@ -1,0 +1,66 @@
+version: '3.8'
+
+services:
+  # Orquestador principal (maestro)
+  orquestador:
+    build: ./orquestador
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config:/app/config
+      - ./resultados:/app/resultados
+    environment:
+      - FLASK_ENV=development
+      - ESCLAVOS=http://esclavo1:5000,http://esclavo2:5000,http://esclavo3:5000
+    depends_on:
+      - esclavo1
+      - esclavo2
+      - esclavo3
+    networks:
+      - koch_network
+
+  # Máquina esclava 1
+  esclavo1:
+    build: ./esclavo
+    ports:
+      - "5001:5000"
+    environment:
+      - NODE_ID=esclavo1
+      - ORQUESTADOR_URL=http://orquestador:8000
+    volumes:
+      - ./resultados:/app/resultados
+    networks:
+      - koch_network
+
+  # Máquina esclava 2
+  esclavo2:
+    build: ./esclavo
+    ports:
+      - "5002:5000"
+    environment:
+      - NODE_ID=esclavo2
+      - ORQUESTADOR_URL=http://orquestador:8000
+    volumes:
+      - ./resultados:/app/resultados
+    networks:
+      - koch_network
+
+  # Máquina esclava 3
+  esclavo3:
+    build: ./esclavo
+    ports:
+      - "5003:5000"
+    environment:
+      - NODE_ID=esclavo3
+      - ORQUESTADOR_URL=http://orquestador:8000
+    volumes:
+      - ./resultados:/app/resultados
+    networks:
+      - koch_network
+
+networks:
+  koch_network:
+    driver: bridge
+
+volumes:
+  resultados:
